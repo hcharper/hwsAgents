@@ -47,9 +47,18 @@ class PricingHandler:
         content = message.content.strip()
         channel_id = message.channel.id
 
-        if content.lower() == "!clear":
+        if content.lower() in ("!clear", "/clear"):
             self.memory.clear(channel_id)
-            await message.reply("Conversation cleared.")
+            # Purge bot messages from the channel
+            try:
+                # Delete all messages except pinned ones
+                deleted = await message.channel.purge(
+                    limit=100,
+                    check=lambda m: not m.pinned,
+                )
+                await message.channel.send(f"Cleared {len(deleted)} messages.", delete_after=5)
+            except discord.Forbidden:
+                await message.reply("Conversation memory cleared (no permission to delete messages).")
             return
 
         self.memory.add(channel_id, "user", f"{message.author.display_name}: {content}")
