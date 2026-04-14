@@ -1,0 +1,363 @@
+# HWS Product Pricing Data
+# Source: productsPricing/docs/ — last synced 2026-04-14
+# This file is read by the pricing agent at startup and injected into the system prompt.
+# The admin agent can update this file via plain-text instructions.
+
+company:
+  name: Harper Web Services
+  short_name: HWS
+  model: "Productized digital services with AI leverage"
+  mrr_focus: true
+  discount_policy: "Reps can discount up to 20% (to floor). Below floor requires Harrison's approval. No exceptions."
+  hourly_rate: 60  # website edits only, not discountable
+
+commission:
+  upfront_percent: 20
+  recurring_percent: 10
+  payment_terms: "Paid when customer pays. No clawbacks. Residuals accrue monthly, paid end of month."
+
+weekly_benchmarks:
+  audits_sold: 10
+  new_mrr_clients: 2
+  larger_ticket_sales: 1
+
+sales_priority:
+  - rank: 1
+    label: "HIGHEST"
+    products: ["AI SEO + GEO Audit", "AI SEO Services"]
+    note: "Wedge → MRR pipeline. Every audit is a qualified lead for $500/mo."
+  - rank: 2
+    label: "HIGHEST"
+    products: ["AI Workflows (Templated)"]
+    note: "Pitch named examples. Hot verticals: dentists, salons, HVAC, law firms, realtors, coaches."
+  - rank: 3
+    label: "HIGH"
+    products: ["Website Build + Care Plan"]
+    note: "Good ticket size. Always attach Care Plan. Natural upsell to SEO after launch."
+  - rank: 4
+    label: "MEDIUM"
+    products: ["RAG Chatbot"]
+    note: "Bundle with websites. Standalone sell to SEO clients with traffic."
+  - rank: 5
+    label: "PREMIUM"
+    products: ["AI Workflows (Enterprise/Custom)"]
+    note: "$10k+ tickets. Always requires discovery call — never quote blind."
+
+wedge_strategy:
+  flow: "$149 Audit → Walkthrough Call → $500/mo SEO Services → AI Workflows upsell"
+  conversion_target: "30%+ from audit to MRR"
+  why: "$149 is below decision threshold. Audit delivers real value, earning trust before asking for more."
+
+products:
+  - name: AI SEO + GEO Audit
+    type: one-time
+    category: wedge
+    price: 149
+    floor: 119
+    commission_upfront: 29.80
+    commission_recurring: null
+    delivery_sla: "48 hours from payment"
+    description: >
+      Blanket audit covering Google SEO and Generative Engine Optimization (GEO).
+      Crawls entire website, analyzes technical health, on-page content, keywords, backlinks.
+      Checks brand visibility in ChatGPT, Perplexity, Claude, Google AI Overviews, Microsoft Copilot.
+      Output is a polished PDF report with prioritized action list.
+    deliverables:
+      - "Executive Summary — visibility score (0-100) + top 5 priorities"
+      - "Google SEO: technical health, on-page, content & keywords, backlink profile"
+      - "GEO/AI Visibility: LLM citation audit, competitor comparison, source authority, schema review, content format analysis"
+      - "Prioritized action list ranked by impact vs effort"
+      - "Free 30-min walkthrough call (this is where the $500/mo upsell lives)"
+    pitch_hook: >
+      "How many times in the last week did you actually Google something versus ask ChatGPT?
+      Your customers are doing the same. For $149 I'll run a blanket audit across Google AND
+      every major AI platform and tell you exactly where you stand. Report in 48 hours, no commitment."
+    upsell_path: "Audit → 30-min walkthrough → $500/mo AI SEO Services"
+    target_customers:
+      - "Local businesses whose site 'isn't really working'"
+      - "E-comm stores losing to competitors"
+      - "Unhappy agency clients (cheap second opinion)"
+      - "Anyone who uses ChatGPT themselves"
+
+  - name: AI SEO Services
+    type: recurring
+    category: mrr
+    price: 500
+    floor: 400
+    price_unit: month
+    commission_upfront: 100
+    commission_recurring: 50
+    delivery_sla: "Ongoing — work starts immediately, first full report in 30 days"
+    twelve_month_ltv_to_rep: 700
+    description: >
+      Monthly AI-leveraged SEO service covering Google ranking AND AI search visibility
+      (ChatGPT, Perplexity, Claude, Google AI Overviews). GEO bundled at no extra cost.
+      Uses AI internally to deliver what agencies charge $2k-$5k/mo for.
+    deliverables:
+      - "4 AI-assisted blog posts per month (weekly cadence, human-reviewed)"
+      - "Technical SEO maintenance (monthly crawl, error fixes, page speed, schema)"
+      - "Google ranking & traffic tracking (50 keywords, weekly updates, GA4 + GSC)"
+      - "GEO/AI visibility optimization (monthly LLM tracking, citation-optimized content, schema.org)"
+      - "Backlink monitoring (new domain alerts, toxic link disavow, 1-2 backlinks/month outreach)"
+      - "Monthly 30-min strategy call with engineer"
+      - "Monthly performance report (rankings, traffic, conversions, AI citation progress)"
+    pitch_hook: >
+      "Agencies charge $2-$5k a month for SEO. We built our stack around AI so we do the same
+      work for $500. Plus GEO optimization so you show up in ChatGPT and Perplexity — included.
+      Month to month, no contract."
+    upsell_path: "SEO Services → Website Build → RAG Chatbot → AI Workflows"
+    target_customers:
+      - "Audit clients (natural upsell)"
+      - "Small/medium businesses with underperforming sites"
+      - "Ex-agency clients burned by overpaying"
+
+  - name: Website Build
+    type: one-time
+    category: build
+    tiers:
+      - tier: Base
+        price: 2500
+        floor: 2000
+        pages: 5
+        delivery_sla: "2-3 weeks"
+        commission_upfront: 500
+        includes:
+          - "5 pages (Home, About, Services, Contact + 1)"
+          - "Fully responsive"
+          - "Contact form → client email"
+          - "Basic on-page SEO (titles, meta, schema, sitemap)"
+          - "GA4 + Search Console setup"
+          - "SSL/HTTPS"
+          - "1 round of revisions"
+          - "30-day post-launch support"
+      - tier: Standard
+        price: 3500
+        floor: 2800
+        pages: 10
+        delivery_sla: "3-4 weeks"
+        commission_upfront: 700
+        includes:
+          - "Everything in Base"
+          - "10 pages"
+          - "Blog / CMS integration"
+          - "Enhanced SEO (keyword research, per-page optimization)"
+          - "2 rounds of revisions"
+          - "Basic animations"
+          - "Light branding/logo work if needed"
+      - tier: Custom
+        price: 5000
+        floor: null
+        price_note: "$5,000+ (scoped after discovery call)"
+        delivery_sla: "4-6 weeks"
+        commission_upfront: 1000
+        includes:
+          - "Everything in Standard"
+          - "E-commerce, custom functionality, third-party integrations"
+          - "Unlimited pages"
+          - "Custom design direction"
+    description: >
+      Fast, modern, engineer-built Next.js websites. No Wix, no drag-and-drop.
+      Hosted on world-class infrastructure. SEO-ready from day one.
+    pitch_hook: >
+      "We build websites the way big tech companies build theirs — Next.js, same infrastructure
+      as Nike and TikTok. $2,500 for a 5-page site in under 3 weeks. Then $99/mo for hosting."
+
+  - name: Website Care Plan
+    type: recurring
+    category: mrr
+    price: 99
+    floor: 79
+    price_unit: month
+    commission_upfront: 19.80
+    commission_recurring: 9.90
+    delivery_sla: "Ongoing"
+    description: "Managed hosting — keeps the site live, fast, and secure."
+    includes:
+      - "Managed hosting (Vercel or equivalent)"
+      - "SSL certificate renewal"
+      - "Daily backups"
+      - "Security updates"
+      - "Uptime monitoring"
+      - "Priority email support"
+    not_included: "Content edits, design changes, new pages, feature additions — billed at $60/hr"
+    note: "Always attach Care Plan to website builds. A build alone is one-and-done; build + Care Plan is a relationship."
+
+  - name: Website Additional Work
+    type: one-time
+    category: hourly
+    price: 60
+    floor: null
+    price_unit: hour
+    price_note: "Not discountable. Billed in 15-min increments."
+    commission_upfront: null
+    commission_recurring: null
+    description: "Text/image edits, new pages, design tweaks, feature additions, integrations."
+    note: "Most clients need 0-2 hours/month. Power users get a heads-up at $200."
+
+  - name: RAG Chatbot
+    type: one-time
+    category: build
+    price: 1500
+    floor: 1200
+    commission_upfront: 300
+    delivery_sla: "1-2 weeks"
+    description: >
+      Custom AI chatbot trained on client's own content (website, docs, FAQs, catalogs).
+      Lives on their website as a chat widget. Answers customer questions 24/7 using their
+      actual business info. RAG = Retrieval Augmented Generation — no hallucinations.
+    deliverables:
+      - "Content ingestion — up to 500 pages/documents into vector database"
+      - "Custom-trained chatbot tuned to client's brand voice"
+      - "Website widget (floating chat bubble, styled to match site)"
+      - "Admin dashboard (view conversations, add/update content, monitor usage)"
+      - "Lead capture (collects contact info, pushes to client)"
+      - "30-day post-launch support"
+    pitch_hook: >
+      "Your customers get instant answers. You save support hours. Trained on YOUR content,
+      not ChatGPT guessing. $1,500 to build, $99/mo to run."
+    upsell_path: "Bundle with websites. Standalone sell to SEO clients with traffic."
+    target_customers:
+      - "Any business with repetitive FAQ emails"
+      - "E-commerce (product questions, shipping, returns)"
+      - "Professional services (booking, pricing, hours)"
+      - "Any website client (natural bundle)"
+
+  - name: RAG Chatbot Hosting
+    type: recurring
+    category: mrr
+    price: 99
+    floor: 79
+    price_unit: month
+    commission_upfront: 19.80
+    commission_recurring: 9.90
+    delivery_sla: "Ongoing"
+    required: true
+    required_note: "Required — no hosting = no sale. Bot costs money to run (LLM API calls, vector DB, hosting)."
+    includes:
+      - "All API costs covered (OpenAI/Anthropic)"
+      - "Vector database hosting"
+      - "Widget uptime and performance"
+      - "Monthly content re-ingestion"
+      - "Usage reports (conversations, top questions, leads)"
+      - "Minor content updates (up to 1 hr/month included)"
+
+  - name: AI Workflows
+    type: one-time
+    category: build
+    description: >
+      Custom or productized automations. Integrates client tools (CRM, email, calendars,
+      phone, website), adds AI for judgment and writing. What agencies charge $15k-$30k for,
+      we deliver for $2,500-$5,000 using AI leverage and reusable templates.
+    tiers:
+      - tier: Starter
+        price: 2500
+        floor: 2000
+        monthly: 99
+        monthly_floor: 79
+        delivery_sla: "1-2 weeks"
+        commission_upfront: 500
+        commission_recurring: 9.90
+        first_year_value_to_rep: 619
+        examples:
+          - name: AI Review Manager
+            description: "Monitors Google Business Profile 24/7. Auto-responds to positive reviews, flags negatives, sends review requests."
+            targets: "restaurants, gyms, chiropractors, auto shops, home services, any Google Maps business"
+            hook: "Every 0.1 star on Google = ~10% more clicks. We manage your rating on autopilot."
+          - name: Simple Automations
+            description: "Invoice processing, document parsing, inbox triage, spreadsheet updates, Slack digests, custom alerts."
+            targets: "any business with a repetitive one-in-one-out workflow"
+      - tier: Standard
+        price: 3500
+        floor: 2800
+        monthly: 149
+        monthly_floor: 119
+        delivery_sla: "2-3 weeks"
+        commission_upfront: 700
+        commission_recurring: 14.90
+        first_year_value_to_rep: 879
+        examples:
+          - name: AI Voice Receptionist
+            description: "24/7 AI phone agent. Answers calls, books appointments, handles FAQs, routes emergencies. Sounds like a real person."
+            targets: "dentists, salons, law firms, HVAC, clinics, real estate offices"
+            hook: "How many calls do you miss every week? Replaces a $3k/mo front desk for $149/mo."
+          - name: AI Sales Call Analyzer
+            description: "Transcribes every sales call. Analyzes objections, winning phrases, talk-to-listen ratio. Grades reps, pushes coaching tips."
+            targets: "B2B sales teams, car dealerships, real estate brokerages, inside sales orgs"
+            hook: "Your sales manager can't listen to every call. This can."
+          - name: FAQ / Support Bot (Advanced)
+            description: "Automated inbox triage and response drafting. Handles the repetitive 60% of support questions."
+            targets: "any business with high support volume"
+      - tier: Growth
+        price: 5000
+        floor: 4000
+        monthly: 199
+        monthly_floor: 159
+        delivery_sla: "3-4 weeks"
+        commission_upfront: 1000
+        commission_recurring: 19.90
+        first_year_value_to_rep: 1239
+        examples:
+          - name: AI Lead Qualifier
+            description: "AI sales rep on client's website 24/7. Runs qualification conversations, scores leads, books prospects, syncs to CRM."
+            targets: "realtors, coaches, consultants, agencies, law firms, mortgage brokers, high-ticket B2B"
+            hook: "Contact forms convert at 2%. Conversational AI converts at 15-25%. 7x more leads from same traffic."
+          - name: Multi-Step Pipelines
+            description: "Cross-system workflows touching 3+ integrations with human-in-the-loop approvals or complex scheduled logic."
+            targets: "operations-heavy businesses"
+      - tier: Enterprise
+        price: 10000
+        floor: null
+        price_note: "$10,000+ (always requires discovery call with Harrison)"
+        monthly: null
+        monthly_note: "Custom retainer — scales with API costs"
+        delivery_sla: "4-8 weeks after scope locked"
+        commission_upfront: 2000
+        commission_recurring: null
+        commission_note: "$2,000+ upfront, custom residual"
+        examples:
+          - name: AI Ad Creative Pipeline
+            description: "Daily competitor ad scraping (Meta/TikTok), AI identifies winning hooks, generates 50-100 ad variations/month."
+            targets: "e-commerce brands spending $10k+/mo on ads, performance marketing agencies"
+            hook: "Creative agencies charge $10k/mo for 20 creatives. We deliver 100 for $2k."
+            note: "Usage-heavy — typical monthly retainer $2,000/mo per brand"
+          - name: Custom Enterprise Workflows
+            description: "Bespoke builds: document-heavy legal/finance, multi-tenant deployments, regulatory compliance, white-label."
+            targets: "enterprise clients with complex needs"
+            note: "Always requires discovery call with Harrison"
+    pitch_hook: >
+      "What's one thing your team does every day that feels like it should be automated?
+      We build custom AI workflows that take that off your plate. Most clients save 15-40 hours/week."
+
+full_stack_example:
+  label: "Full-Stack Website Client"
+  items:
+    - "$2,500 base website build"
+    - "$99/mo Care Plan"
+    - "$500/mo AI SEO Services (GEO bundled)"
+    - "$1,500 chatbot build"
+    - "$99/mo chatbot hosting"
+  first_year_revenue: 10976
+  rep_commission_upfront: 820
+  rep_commission_monthly: 69.80
+  rep_first_year_total: 1658
+
+rules_of_engagement:
+  - "Never promise delivery faster than SLA without checking with Harrison first."
+  - "Never quote below floor without Harrison's explicit approval."
+  - "Never quote Enterprise Workflows blind — always book a discovery call first."
+  - "Never over-promise SEO results — no '#1 on Google' guarantees. Ever."
+  - "Always push for MRR — one-time sales are good; recurring is the business."
+  - "Always offer the Care Plan on websites."
+  - "Always attach the wedge — if not ready for monthly, sell the audit."
+  - "Every audit gets a walkthrough call — that's where the upsell lives."
+  - "Lead with the ChatGPT hook."
+
+red_flags:
+  - "Can't articulate what they actually need"
+  - "Haggles below floor on first call"
+  - "Wants guarantees you can't make ('promise me #1 on Google by next week')"
+  - "Hostile or disrespectful"
+  - "Has sued or bad-mouthed past vendors publicly"
+  - "Asks for work 'on spec' before paying"
+  - "Requires NDA before initial conversation"
+  - "Totally unrealistic timeline"

@@ -1,0 +1,133 @@
+# HWS Objection Handling Scripts
+# Source: productsPricing/docs/ — last synced 2026-04-14
+# Used by the pricing agent to help reps handle objections in real time.
+
+universal:
+  - objection: "Let me think about it"
+    response: "Totally — what's the main thing you want to think about? Maybe I can answer it right now."
+
+  - objection: "Send me something in writing"
+    response: "Absolutely. Before I do — what's the one thing that would make this a no-brainer for you? I'll make sure to address it in the email."
+
+  - objection: "I need to talk to my partner/spouse/team"
+    response: "Great — want me to jump on a quick call with you both? I'm happy to answer their questions live."
+
+  - objection: "Can you come down on price?"
+    response: "I can do [floor price] — that's as low as I can go without checking upstairs. Should we lock it in?"
+
+  - objection: "I've been burned by agencies before"
+    response: "I get it — most agencies are bloated. That's why we're different. Month-to-month, no contract, start with the $149 audit. Zero risk."
+
+  - objection: "What makes you different?"
+    response: "Three things: we're engineers, not marketers. We use AI to cut our cost to you. And we're month to month — no contracts. If we're not delivering, you leave."
+
+  - objection: "I don't have time for this right now"
+    response: "That's exactly why you hire us. You don't DO anything — we do. Ten minutes to get started, then you forget about it."
+
+  - objection: "Is this a scam?"
+    response: "Fair question. Here's our website, here's the engineer's name, here's 3 client references. What would help you feel confident?"
+
+per_product:
+  AI SEO + GEO Audit:
+    - objection: "I already have someone doing SEO"
+      response: "Great — this is a $149 second opinion. Plus it tests your AI visibility, which most SEO folks aren't even checking yet."
+
+    - objection: "Nobody uses AI search"
+      response: "Do YOU? Then so do your customers. And the businesses who optimize early win."
+
+    - objection: "SEO doesn't matter for my business"
+      response: "Fair, but ChatGPT matters for every business. The audit covers both."
+
+    - objection: "Can you do it free?"
+      response: "I can do $119 instead of $149 — that's as low as I can go."
+
+    - objection: "What if I don't like the report?"
+      response: "Then you're out $149 and you learned what's broken. Nobody's asked for a refund yet."
+
+    - objection: "How long does it take?"
+      response: "48 hours from payment."
+
+  AI SEO Services:
+    - objection: "SEO takes forever to work"
+      response: "First Google wins usually hit in 60-90 days; real growth by month 6. AI visibility moves faster though."
+
+    - objection: "$500 is still a lot"
+      response: "Compared to what? Agencies charge 4x for just Google. We do Google AND ChatGPT for $500."
+
+    - objection: "Can I get a discount?"
+      response: "I can do $400 a month — that's our floor."
+
+    - objection: "Do I have to sign a contract?"
+      response: "No. Month to month. Cancel with 30 days notice."
+
+    - objection: "Nobody uses ChatGPT for my industry"
+      response: "Yet. And the businesses who optimize early win when it tips. It's the Google-in-2003 moment."
+
+    - objection: "4 posts a month is all?"
+      response: "Weekly cadence — consistent is better than batch. Google rewards steady publishing, not content dumps."
+
+    - objection: "How do I know you're any good?"
+      response: "Start with the $149 audit. You'll see the quality. If you like it, upgrade to monthly."
+
+  Website Build:
+    - objection: "I can get one for $500 on Fiverr"
+      response: "You can. And you'll replace it next year when it breaks. Ours lasts 5+ years."
+
+    - objection: "Squarespace is cheaper"
+      response: "$30/mo plus your time — and you're capped. We build real infrastructure that grows with you."
+
+    - objection: "$2,500 is a lot"
+      response: "One new customer pays for the site. What's a customer worth to you?"
+
+    - objection: "What does the $99/month cover?"
+      response: "Hosting, backups, SSL, security, uptime monitoring. Keeps the site alive. That's it."
+
+    - objection: "What if I need edits?"
+      response: "$60/hr, billed in 15-min increments. Most clients need 0-2 hours a month. Text tweaks are fast."
+
+    - objection: "Why isn't editing included?"
+      response: "Because every business is different. Some never need edits — why should they subsidize the ones who do? This way you only pay for what you use."
+
+    - objection: "Do I own the website?"
+      response: "Yes — you own everything, including the code. If you ever want to move, you can."
+
+    - objection: "How long does it take?"
+      response: "2-3 weeks for Base and Standard. Custom depends on scope."
+
+  RAG Chatbot:
+    - objection: "ChatGPT is free — why pay?"
+      response: "ChatGPT doesn't know YOUR business. Ask it about your prices — it'll make stuff up. Ours is trained on your actual content."
+
+    - objection: "I don't want it making up answers"
+      response: "That's exactly why RAG works — it only answers from your content. If it doesn't know, it says so and offers to connect to a human."
+
+    - objection: "Why the monthly fee?"
+      response: "AI costs money to run. Every conversation triggers API calls and database lookups. $99 covers it plus hosting and updates."
+
+    - objection: "How smart is it?"
+      response: "Same AI models as the big tech companies — Claude, GPT-4. Just trained on YOUR stuff."
+
+    - objection: "Will it replace my support team?"
+      response: "No — it handles the 60% of questions that are repetitive so your team can focus on the 40% that actually need humans."
+
+    - objection: "Can I edit what it knows?"
+      response: "Yes — admin dashboard. Add new info anytime. Minor updates are included."
+
+  AI Workflows:
+    - objection: "That's expensive"
+      response: "What's the cost of keeping it manual for another year?"
+
+    - objection: "Can you do it for less?"
+      response: "Starter is $2,500. If the scope fits Starter, we match the price."
+
+    - objection: "I don't trust AI to do this"
+      response: "Fair — human-in-the-loop where it matters. AI does the grunt work, you approve the decisions."
+
+    - objection: "Zapier can do this"
+      response: "Zapier moves data. We add AI judgment — writing, classification, conversation. Zapier can't do that."
+
+    - objection: "How is this different from your chatbot?"
+      response: "RAG Chatbot answers questions from docs. Workflows DO things — book meetings, send emails, update your CRM, make decisions."
+
+    - objection: "Will it break?"
+      response: "30 days of support on every build, plus the retainer covers ongoing fixes. You're not on your own."
