@@ -30,6 +30,11 @@ def main() -> None:
     dm = DataManager(data_dir)
     dm.load()
 
+    # Set up usage tracker (reads same usage.json written by all agents)
+    from shared.usage_tracker import UsageTracker
+    from shared.llm import set_tracker
+    set_tracker(UsageTracker(data_dir / "usage.json"))
+
     from shared.llm import create_client
     client = create_client(settings.anthropic_api_key.get_secret_value())
 

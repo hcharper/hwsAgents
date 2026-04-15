@@ -8,7 +8,7 @@ import discord
 from anthropic import AsyncAnthropic
 from loguru import logger
 
-from shared.llm import chat
+from shared.llm import chat, get_tracker
 from shared.memory import ChannelMemory
 from manager_agent.prompts import build_system_prompt
 
@@ -52,10 +52,25 @@ class ManagerHandler:
         content = message.content.strip()
         channel_id = message.channel.id
 
-        if content.lower() == "!clear":
+        if content.lower() in ("!clear", "/clear"):
             self.memory.clear(channel_id)
             self._pending_changes.pop(channel_id, None)
-            await message.reply("Conversation cleared.")
+            try:
+                deleted = await message.channel.purge(
+                    limit=100,
+                    check=lambda m: not m.pinned,
+                )
+                await message.channel.send(f"Cleared {len(deleted)} messages.", delete_after=5)
+            except discord.Forbidden:
+                await message.reply("Conversation memory cleared.")
+            return
+
+        # /usage command — show API spend
+        if content.lower().startswith(("/usage", "!usage")):
+            parts = content.split()
+            month = parts[1] if len(parts) > 1 else None
+            tracker = get_tracker()
+            await message.reply(tracker.format_summary(month))
             return
 
         # Confirmation flow
@@ -79,6 +94,7 @@ class ManagerHandler:
                     system_prompt=self.system_prompt,
                     messages=messages,
                     temperature=0.3,
+                    agent_name="manager_agent",
                 )
 
             self.memory.add(channel_id, "assistant", reply)

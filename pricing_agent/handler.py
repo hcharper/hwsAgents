@@ -72,6 +72,7 @@ class PricingHandler:
                     system_prompt=self.system_prompt,
                     messages=messages,
                     temperature=0.7,
+                    agent_name="pricing_agent",
                 )
 
             self.memory.add(channel_id, "assistant", reply)
